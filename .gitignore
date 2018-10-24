@@ -1,3 +1,19 @@
+target/
+test-output/
+
+.classpath
+.project
+.settings/
+
+*.xml.versionsBackup
+jgitflow.log
+.repository
+
+#IntelliJ files and folders
+out/
+.idea
+*.iml
+
 # Compiled class file
 *.class
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.jaceksudak</groupId>
+    <artifactId>chmieleo</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Chmieleo</name>
+
+    <modules>
+        <module>chmieleo-web</module>
+        <module>chmieleo-db-discovery</module>
+        <module>chmieleo-db-storage</module>
+        <module>chmieleo-voyager</module>
+        <module>chmieleo-excavator</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <database.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</database.driver>
+
+        <!--default local database, change or inject remote database data if needed-->
+        <db.discovery.url>jdbc:sqlserver://127.0.0.1:1433;instance=SQLEXPRESS;databaseName=discovery;</db.discovery.url>
+        <db.discovery.username>sa</db.discovery.username>
+        <db.discovery.password>sa</db.discovery.password>
+        <db.storage.url>jdbc:sqlserver://127.0.0.1:1433;instance=SQLEXPRESS;databaseName=storage;</db.storage.url>
+        <db.storage.username>sa</db.storage.username>
+        <db.storage.password>sa</db.storage.password>
+
+        <javax.version>7.0</javax.version>
+        <org.projectlombok.version>1.16.16</org.projectlombok.version>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <liquibase-maven-plugina.version>3.6.2</liquibase-maven-plugina.version>
+        <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
+        <com.microsoft.sqlserver.sqljdbc4.version>4.0</com.microsoft.sqlserver.sqljdbc4.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javax.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>${liquibase-maven-plugina.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.4.0.jre8</version>
+        </dependency>
+
+    </dependencies>
+</project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="db-changelog.xml">
+
+    <!--<changeSet author="JacekS" id="excavator_init">-->
+        <!--<createTable tableName="shop">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="name" type="varchar(31)"/>-->
+            <!--<column name="baseUri" type="varchar(255)"/>-->
+        <!--</createTable>-->
+
+        <!--<createTable tableName="item_list">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="shopId" type="bigint"/>-->
+            <!--<column name="selectorId" type="bigint"/>-->
+            <!--<column name="uri" type="varchar(255)"/>-->
+            <!--<column name="itemType" type="varchar(31)"/>-->
+        <!--</createTable>-->
+
+        <!--<createTable tableName="property">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="itemListId" type="bigint"/>-->
+            <!--<column name="selectorId" type="bigint"/>-->
+            <!--<column name="fieldName" type="varchar(255)"/>-->
+        <!--</createTable>-->
+
+        <!--<createTable tableName="selector">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="value" type="varchar(255)"/>-->
+            <!--<column name="resultType" type="varchar(31)"/>-->
+        <!--</createTable>-->
+
+        <!--<createTable tableName="additional_action">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="selectorId" type="bigint"/>-->
+            <!--<column name="value" type="varchar(255)"/>-->
+            <!--<column name="actionType" type="varchar(31)"/>-->
+            <!--<column name="ordering" type="int"/>-->
+        <!--</createTable>-->
+
+        <!--<addForeignKeyConstraint baseColumnNames="shopId" baseTableName="item_list"-->
+                                 <!--constraintName="fk_itemList_shop_shopId" deferrable="false" initiallyDeferred="false"-->
+                                 <!--onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+                                 <!--referencedTableName="shop"/>-->
+
+        <!--<addForeignKeyConstraint baseColumnNames="selectorId" baseTableName="item_list"-->
+                                 <!--constraintName="fk_itemList_selector_selectorId" deferrable="false" initiallyDeferred="false"-->
+                                 <!--onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+                                 <!--referencedTableName="selector"/>-->
+
+        <!--<addForeignKeyConstraint baseColumnNames="itemListId" baseTableName="property"-->
+                                 <!--constraintName="fk_property_itemList_itemListId" deferrable="false" initiallyDeferred="false"-->
+                                 <!--onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+                                 <!--referencedTableName="item_list"/>-->
+
+        <!--<addForeignKeyConstraint baseColumnNames="selectorId" baseTableName="property"-->
+                                 <!--constraintName="fk_property_selector_selectorId" deferrable="false" initiallyDeferred="false"-->
+                                 <!--onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+                                 <!--referencedTableName="selector"/>-->
+
+        <!--<addForeignKeyConstraint baseColumnNames="selectorId" baseTableName="additional_action"-->
+                                 <!--constraintName="fk_additionalAction_selector_selectorId" deferrable="false" initiallyDeferred="false"-->
+                                 <!--onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+                                 <!--referencedTableName="selector"/>-->
+    <!--</changeSet>-->
+
+</databaseChangeLog>
