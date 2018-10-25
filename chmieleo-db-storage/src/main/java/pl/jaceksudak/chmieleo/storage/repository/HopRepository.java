@@ -7,15 +7,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-//@Stateless
+@Stateless
 @Slf4j
 public class HopRepository {
 
-//    @PersistenceContext(unitName = "chmieleostoragepu")
-//    private EntityManager em;
-//
-//    public void addNew(Hop hop) {
-//        log.info("witam serdecznie");
-//        em.persist(hop);
-//    }
+    @PersistenceContext(unitName = "chmieleostoragepu")
+    private EntityManager em;
+
+    public void addNew(Hop hop) {
+        log.info("witam serdecznie");
+        em.persist(hop);
+    }
 }

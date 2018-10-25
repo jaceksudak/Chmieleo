@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 @Slf4j
-public class TestRepository {
+public class ShopRepository {
 
     @PersistenceContext(unitName = "chmieleodiscoverypu")
     private EntityManager em;
@@ -17,5 +17,9 @@ public class TestRepository {
     public void save(Shop shop) {
         log.info("test Repo");
         em.persist(shop);
+    }
+
+    public Shop find(Long id) {
+        return em.find(Shop.class, id);
     }
 }

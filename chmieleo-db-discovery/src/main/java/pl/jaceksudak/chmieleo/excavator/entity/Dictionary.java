@@ -1,8 +1,8 @@
 package pl.jaceksudak.chmieleo.excavator.entity;
 
+
 import lombok.*;
 import pl.jaceksudak.chmieleo.excavator.entity.actions.AdditionalAction;
-import pl.jaceksudak.chmieleo.excavator.enums.ResultType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,12 +10,13 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @Setter
+@ToString
+@Builder
 @EqualsAndHashCode(of = {"id", "value"})
 @Entity
-public class Selector {
+public class Dictionary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,35 +26,19 @@ public class Selector {
     @Column
     private String value;
 
-    @OneToOne(mappedBy = "selector")
-    private ItemList itemList;
-
-    @OneToOne(mappedBy = "selector")
-    private Property property;
-
     @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "selector", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dictionary")
     private List<AdditionalAction> additionalActions = new ArrayList<>();
 
 
     public void addAdditionalAction(AdditionalAction additionalAction) {
         additionalActions.add(additionalAction);
-        additionalAction.setSelector(this);
+        additionalAction.setDictionary(this);
     }
 
     public void removeAdditionalAction(AdditionalAction additionalAction) {
         additionalActions.remove(additionalAction);
-        additionalAction.setSelector(null);
+        additionalAction.setDictionary(null);
     }
 
-    @Override
-    public String toString() {
-        return "Selector{" +
-                "id=" + id +
-                ", value='" + value + '\'' +
-                ", itemList=" + (itemList != null ? itemList.getId() : null) +
-                ", property=" + (property != null ? property.getId() : null) +
-                ", additionalActions=" + additionalActions +
-                '}';
-    }
 }

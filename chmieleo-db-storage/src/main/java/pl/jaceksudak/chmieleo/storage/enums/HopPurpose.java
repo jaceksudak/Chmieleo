@@ -1,7 +1,8 @@
 package pl.jaceksudak.chmieleo.storage.enums;
 
 public enum HopPurpose {
-    PELLET,
-    WHOLELEAF,
+    AROMA,
+    BITTER,
+    BOTH,
     UNDEFINED;
 }

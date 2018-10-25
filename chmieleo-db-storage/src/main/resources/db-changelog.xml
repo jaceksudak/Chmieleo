@@ -13,16 +13,36 @@
         <!--</createTable>-->
     <!--</changeSet>-->
 
-    
+    <changeSet author="JacekS" id="excavator_init">
+        <createTable tableName="BaseItem">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="price" type="numeric"/>
+            <column name="title" type="varchar(255)"/>
+            <column name="availability" type="bit"/>
+        </createTable>
 
-    <!--<changeSet author="JacekS" id="excavator_init">-->
-        <!--<createTable tableName="shop">-->
-            <!--<column name="id" type="bigint" autoIncrement="true">-->
-                <!--<constraints primaryKey="true" nullable="false"/>-->
-            <!--</column>-->
-            <!--<column name="name" type="varchar(31)"/>-->
-            <!--<column name="baseUri" type="varchar(255)"/>-->
-        <!--</createTable>-->
+        <createTable tableName="Hop">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="harvestYear" type="integer"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="Hop"
+                        constraintName="fk_hop_baseItem_id" deferrable="false" initiallyDeferred="false"
+                        onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                        referencedTableName="BaseItem"/>
+    </changeSet>
+
+
+
+    <changeSet author="JacekS" id="hopFrom_added">
+        <addColumn tableName="Hop">
+            <column name="hopForm" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 
         <!--<createTable tableName="item_list">-->
             <!--<column name="id" type="bigint" autoIncrement="true">-->

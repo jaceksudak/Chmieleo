@@ -1,42 +1,31 @@
 package pl.jaceksudak.chmieleo.storage.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import pl.jaceksudak.chmieleo.storage.enums.HopForm;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.math.BigDecimal;
 
-//@Getter
-//@Entity
-//@NoArgsConstructor
-public class Hop extends BaseItem {
-//
-//    @Column
-//    private int harvestYear;
+@Getter
+@Setter
+@ToString(callSuper = true)
+@Entity
+@NoArgsConstructor
+public class Hop extends BaseItem implements SomeEntity {
 
-//    @Enumerated(EnumType.STRING)
-//    private HopForm hopForm;
-//
-//    @Enumerated(EnumType.STRING)
-//    private HopPurpose hopPurpose;
-//
-//    @Column
-//    private double alphaAcids;
-//
-//    @Builder
-//    public Hop(Integer id, Boolean valid, Integer categoryId, String name, String variety, String country, Integer netWeight, String description, String manufacturer, String image, Double currentPrice, Boolean currentAvailability, String uri, int harvestYear, HopForm hopForm, HopPurpose hopPurpose, double alphaAcids) {
-//        super(id, valid, categoryId, name, variety, country, netWeight, description, manufacturer, image, currentPrice, currentAvailability, uri);
-//        this.harvestYear = harvestYear;
-//        this.hopForm = hopForm;
-//        this.hopPurpose = hopPurpose;
-//        this.alphaAcids = alphaAcids;
-//    }
-//
-//    @Builder
-//    public Hop(Boolean valid, int harvestYear) {
-//        super(null, valid);
-//        this.harvestYear = harvestYear;
-//    }
+    @Column
+    private Integer harvestYear;
+
+    @Enumerated(EnumType.STRING)
+    private HopForm hopForm;
+
+    @Builder
+    public Hop(BigDecimal price, Boolean availability, String title, Integer harvestYear, HopForm hopForm) {
+        super(null, price, availability, title);
+        this.harvestYear = harvestYear;
+        this.hopForm = hopForm;
+    }
 }

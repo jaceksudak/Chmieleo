@@ -1,12 +1,14 @@
 package pl.jaceksudak.chmieleo.voyager;
 
 import lombok.extern.slf4j.Slf4j;
-import pl.jaceksudak.chmieleo.excavator.entity.*;
+import pl.jaceksudak.chmieleo.excavator.entity.ItemList;
+import pl.jaceksudak.chmieleo.excavator.entity.Property;
+import pl.jaceksudak.chmieleo.excavator.entity.Selector;
+import pl.jaceksudak.chmieleo.excavator.entity.Shop;
+import pl.jaceksudak.chmieleo.excavator.entity.actions.AdditionalAction;
+import pl.jaceksudak.chmieleo.excavator.entity.actions.TextAction;
 import pl.jaceksudak.chmieleo.excavator.enums.ItemType;
-import pl.jaceksudak.chmieleo.excavator.enums.ResultType;
-import pl.jaceksudak.chmieleo.excavator.repository.TestRepository;
-import pl.jaceksudak.chmieleo.storage.entity.Hop;
-import pl.jaceksudak.chmieleo.storage.repository.HopRepository;
+import pl.jaceksudak.chmieleo.excavator.repository.ShopRepository;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -18,17 +20,14 @@ import javax.ejb.Startup;
 @Slf4j
 public class VoyagerTestController {
 
-//    @EJB
-//    private HopRepository hopRepository;
-
     @EJB
-    private TestRepository testRepository;
+    private ShopRepository shopRepository;
 
     @PostConstruct
     private void init() {
         log.info("SIEMANKO");
 
-        test();
+//        test();
 
 //        Hop hop = Hop.builder()
 //                .harvestYear(2015)
@@ -60,12 +59,10 @@ public class VoyagerTestController {
                 .build();
 
         Selector selector = Selector.builder()
-                .resultType(ResultType.DECIMAL)
                 .value("a.asdas?asd")
                 .build();
 
         Selector selector2 = Selector.builder()
-                .resultType(ResultType.STRING)
                 .value("a.asdas?asd")
                 .build();
 
@@ -74,7 +71,7 @@ public class VoyagerTestController {
 
         property.addSelector(selector2);
 
-        AdditionalAction additionalAction = AdditionalAction.builder()
+        AdditionalAction additionalAction = TextAction.builder()
                 .build();
 
         selector2.addAdditionalAction(additionalAction);
@@ -88,8 +85,17 @@ public class VoyagerTestController {
         log.info("{}", selector2.toString());
         log.info("{}", additionalAction.toString());
 
-        testRepository.save(shop);
+        shopRepository.save(shop);
         log.info("persist");
+
+        Shop foundShop = shopRepository.find(3L);
+        log.info("{}", foundShop.toString());
+        for (Property property1 : foundShop.getItemLists().get(0).getProperties()) {
+            log.info("{}", property1.toString());
+            log.info("{}", property1.getSelector().toString());
+            log.info("_______________");
+        }
+        log.info("PAPA");
 //
 //        shop.removeItemList(itemList);
 //        log.info("REMOVED " + shop.toString());
