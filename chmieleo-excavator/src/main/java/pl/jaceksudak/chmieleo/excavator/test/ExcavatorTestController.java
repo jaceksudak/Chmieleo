@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-@Startup
 @Slf4j
 public class ExcavatorTestController {
 
